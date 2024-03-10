@@ -1,12 +1,13 @@
---/*
+/*
+--For Recreation
 DROP TABLE customer_accounts;
 DROP TABLE customer_interactions;
 DROP TABLE customer_licenses;
-DROP TABLE customer_accounts_new;
+DROP TABLE customer_accounts_new CASCADE;
 DROP TABLE customer_pricing_plans;
-DROP TABLE customer_interactions_new;
+DROP TABLE customer_interactions_new CASCADE;
 DROP TABLE service_representatives;
---DROP TABLE customer_licenses_new;
+DROP TABLE customer_licenses_new CASCADE;
 --*/
 
 CREATE TABLE IF NOT EXISTS customer_accounts (
@@ -57,30 +58,10 @@ VALUES
 	('35', '{“license_id”:“60831f59a531eef325e525ad58bae0e5e8c2d75a”,“role”: “developer”,“status”: “disabled”}', '2021-03-26 02:38:02.136033+00', '2022-07-21 23:03:29.862040+00')
 ;
 
-CREATE TABLE IF NOT EXISTS customer_accounts_new (
-	id INT GENERATED ALWAYS AS IDENTITY,
-	email VARCHAR(50) UNIQUE NOT NULL,
-	pricing_plan_id INT NOT NULL,
-	created_at TIMESTAMP NOT NULL,
-	updated_at TIMESTAMP,
-	PRIMARY KEY (id),
-	CONSTRAINT fk_pricing_plan
-		FOREIGN KEY (pricing_plan_id)
-			REFERENCES customer_pricing_plan(id)
-);
-
-INSERT INTO customer_accounts_new (id, email, pricing_plan_id, created_at, updated_at)
-VALUES
-	('1', 'abc@123.com', 1, '2019-05-01 21:13:05.156042+00', '2019-05-01 21:13:11.804514+00'),
-	('2', '123@abc.com', 2, '2019-07-12 16:05:02.414454+00', '2020-01-04 17:23:05.594305+00'),
-	('3', 'hello@world.com', 3, '2019-07-23 12:26:47.571431+00', '2019-09-17 04:32:32.493065+00'),
-	('6', 'ilovedogs@dogs.com', 1, '2024-01-01 21:13:11.804514+00', '2024-01-01 21:13:11.804514+00'),
-	('7', 'fakedatarules@gophermail.com', 2, '2024-02-16 17:23:05.594305+00', '2024-02-16 17:23:05.594305+00'),
-	('35', 'skidboot@heelermail.com', 3, '2024-03-08 04:32:32.493065+00', '2024-03-08 04:32:32.493065+00')
-;
+--Line Break for Tyler Pugliese Edits -- 
 
 CREATE TABLE IF NOT EXISTS customer_pricing_plans (
-	id INT GENERATED ALWAYS AS IDENTITY,
+	id INT,
 	name VARCHAR(50) UNIQUE NOT NULL,
 	monthly_charge NUMERIC,
 	created_date DATE NOT NULL,
@@ -95,8 +76,51 @@ VALUES
 	('3', 'Enterprise', 500, '2019-07-23', '2019-07-23')
 ;
 
+
+CREATE TABLE IF NOT EXISTS customer_accounts_new (
+	id INT,
+	email VARCHAR(50) UNIQUE NOT NULL,
+	pricing_plan_id INT NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+	updated_at TIMESTAMP,
+	PRIMARY KEY (id),
+	CONSTRAINT fk_pricing_plan
+		FOREIGN KEY (pricing_plan_id)
+			REFERENCES customer_pricing_plans(id)
+);
+
+INSERT INTO customer_accounts_new (id, email, pricing_plan_id, created_at, updated_at)
+VALUES
+	('1', 'abc@123.com', '1', '2019-05-01 21:13:05.156042+00', '2019-05-01 21:13:11.804514+00'),
+	('2', '123@abc.com', '2', '2019-07-12 16:05:02.414454+00', '2020-01-04 17:23:05.594305+00'),
+	('3', 'hello@world.com', '3', '2019-07-23 12:26:47.571431+00', '2019-09-17 04:32:32.493065+00'),
+	('6', 'ilovedogs@dogs.com', '1', '2024-01-01 21:13:11.804514+00', '2024-01-01 21:13:11.804514+00'),
+	('7', 'fakedatarules@gophermail.com', '2', '2024-02-16 17:23:05.594305+00', '2024-02-16 17:23:05.594305+00'),
+	('35', 'skidboot@heelermail.com', '3', '2024-03-08 04:32:32.493065+00', '2024-03-08 04:32:32.493065+00')
+;
+
+CREATE TABLE IF NOT EXISTS service_representatives (
+	id INT,
+	email VARCHAR(100) UNIQUE NOT NULL,
+	first_name VARCHAR(50) NOT NULL,
+	last_name VARCHAR(50) NOT NULL,
+	start_date DATE NOT NULL,
+	end_date DATE,
+	PRIMARY KEY (id)
+
+);
+
+INSERT INTO service_representatives (id, email, first_name, last_name, start_date, end_date)
+VALUES
+	('1', 'andybotwin@dogdb.com', 'Andy', 'Botwin', '2021-01-01', NULL),
+	('2', 'jillianbelk@dogdb.com', 'Jillian', 'Belk', '2021-01-01', NULL),
+	('3', 'monicageller@dogdb.com', 'Monica', 'Geller', '2021-02-01', NULL),
+	('4', 'derek.hostetler@dogdb.com', 'Derek', 'Hostetler', '2020-03-08', '2023-12-25')
+	 
+;
+
 CREATE TABLE IF NOT EXISTS customer_interactions_new (
-	id INT GENERATED ALWAYS AS IDENTITY,
+	id INT,
 	account_id INT,
 	channel VARCHAR(50) NOT NULL,
 	category VARCHAR(100) NOT NULL,
@@ -119,27 +143,25 @@ VALUES
 	('4', '7', 'phone', 'Account Change', '4', 'canceled', '2022-02-14 15:02:47.219352+00', '2022-02-20 09:22:48.145523+00')
 
 ;
-
-CREATE TABLE IF NOT EXISTS service_representatives (
-	id INT GENERATED ALWAYS AS IDENTITY,
-	email VARCHAR(100) UNIQUE NOT NULL,
-	first_name VARCHAR(50) NOT NULL,
-	last_name VARCHAR(50) NOT NULL,
-	start_date DATE NOT NULL,
-	end_date DATE,
-	PRIMARY KEY (id)
-
-);
-
-INSERT INTO service_representatives (id, email, first_name, last_name, start_date, end_date)
-VALUES
-	('1', 'andybotwin@dogdb.com', 'Andy', 'Botwin', '2021-01-01', NULL),
-	('2', 'jillianbelk@dogdb.com', 'Jillian', 'Belk', '2021-01-01', NULL),
-	('3', 'monicageller@dogdb.com', 'Monica', 'Geller', '2021-02-01', NULL),
-	('4', 'derek.hostetler@dogdb.com', 'Derek', 'Hostetler', '2020-03-08', '2023-12-25')
-	 
-;
 	 
 CREATE TABLE IF NOT EXISTS customer_licenses_new (
+	id VARCHAR(50),
+	account_id INT NOT NULL,
+	role VARCHAR(50) NOT NULL,
+	status VARCHAR(50) NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+	updated_at TIMESTAMP,
+	PRIMARY KEY(id),
+	CONSTRAINT fk_account_id
+		FOREIGN KEY (account_id)
+			REFERENCES customer_accounts_new (id)
 
 );
+
+INSERT INTO customer_licenses_new (id, account_id, role, status, created_at, updated_at)
+VALUES
+	('d17cb11cda9ba249c22f67e4aed65d0f65f1a80c', '1','analyst', 'active', '2022-03-12 02:56:37.652093+00', '2022-03-12 02:56:37.652093+00'),
+	('be49ad8f4a68fbbdd1674b41da20759f54b0e930', '6', 'developer', 'active', '2021-05-28 04:42:58.955093+00', '2021-05-28 04:42:58.955093+00'),
+	('8541866bb3a4c4ecf070b2c1b2f7bb9c0934d287', '6', 'admin', 'active', '2022-10-30 21:33:46.353060+00', '2022-10-30 21:33:46.353060+00'),
+	('60831f59a531eef325e525ad58bae0e5e8c2d75a', '35', 'developer', 'disabled', '2021-03-26 02:38:02.136033+00', '2022-07-21 23:03:29.862040+00')
+;
