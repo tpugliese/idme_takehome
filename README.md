@@ -18,7 +18,7 @@ Inside this Notebook folder are my answers to the five questions proposed by the
 
 ### Credentials
 
-Here is where the config file for the local PostgreSQL instance is located.  I opted to obfuscate the password and credentials in the Technical Takehome notebook for privacy reasons but display the file here.  I believe it is important to treat this project like a repository that could be downloaded and utilized by a team member, who could put their credentials in the file and follow the process.
+Here is where the `config.yml` file for the local PostgreSQL instance is located.  I opted to obfuscate the password and credentials in the third cell of the Technical Takehome notebook for privacy reasons but display the config file here.  I believe it is important to treat this project like a repository that could be downloaded and utilized by a team member, who could put their credentials in the file and follow the process.  In Databases, dbt and other technical configurations, configuration or credential files are integral to environment connections.
 
 ### Notebook
 
@@ -38,6 +38,8 @@ In creating this response, I utilized [Anaconda](https://www.anaconda.com/) for 
 In the Notebook, I import the [sqlalchemy](https://www.sqlalchemy.org/) and [psycopg2](https://pypi.org/project/psycopg2/) python packages, and their dependencies as managed by the aforementioned Anaconda package manager.
 
 For troubleshooting, I followed Nihal Sahan's guide on [PostgreSQL in Jupyter](https://github.com/nihalsahan/DB/blob/main/ConnectPostgres.ipynb) I found through Google.
+
+For the Config File obfuscating, I followed [Vicki Boykis' Guide](https://vickiboykis.com/2020/02/25/securely-storing-configuration-credentials-in-a-jupyter-notebook/) and chose YAML because it is prolific with dbt.
 
 ## Connect
 
