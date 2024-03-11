@@ -2,14 +2,12 @@
 
 ## Overview
 
-The given assignment was sent in a PDF with three sample tables and five long-form questions about a fictional company, DogDB.  To thoroughly and professionally answer these questions, I strove to create an accessible and visible response with a Github Repo.
-
-The other benefit of utilizing GitHub as a publishing platform is that it allows me to display and showcase my work in the future to other prospective employers or other interviewees for this position of Analytics Engineer.
+The given assignment was sent in a PDF with three sample tables and five long-form questions about a fictional company, DogDB.  To thoroughly and professionally answer these questions, I strove to create an accessible and visible response with a Github Repo.  This has the benfeit of a polished and informative platform where answers can be displayed with technical or explanitory responses.
 
 
 ## Assignment Response
 
-The requested work can be found in the Notebook folder named `Technical Takehome.ipynb`.  I used Jupyter Notebook to provide a clean and interactive way to demonstrate my work. 
+The requested work can be found in the Notebook folder named `ID.Me Technical Takehome.ipynb`.  I used Jupyter Notebook to provide a clean and interactive way to demonstrate my work. 
 
 Inside this Notebook folder are my answers to the five questions proposed by the assignment and answered to the best of my ability in a reasonable timeframe.  While not all-encompassing, I try to be straightforward, detailed, and thorough in my responses.  The notebook can be downloaded and used in Jupyter Cloud or viewed on GitHub directly.
 
