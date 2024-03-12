@@ -24,6 +24,12 @@ Here is where the Technical Takehome Notebook is located, which is the main file
 
 This folder also includes a Personal Assessment Notebook that is meant to be my opinion of the assignment and recount of the work involved.
 
+### Setup
+
+Here is where I house my Anaconda environment I used while creating this work.  For installing Anaconda's miniconda, [follow this guide](https://docs.anaconda.com/free/miniconda/#quick-command-line-install).
+
+Then you can install my environment via `conda env create -f idme-takehome-env.yml`
+
 ### SQL Scripts
 
 This folder houses the PostgreSQL script that creates the schema and tables utilized in this example.  I hope at a baseline this can serve as an example of my SQL knowledge and possibly be used in the future if this assignment continues to be provided in such a manner.  
