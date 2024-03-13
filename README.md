@@ -2,7 +2,7 @@
 
 ## Overview
 
-The given assignment was sent in a PDF with three sample tables and five long-form questions about a fictional company, DogDB.  To thoroughly and professionally answer these questions, I strove to create an accessible and visible response with a Github Repo.  This has the benfeit of a polished and informative platform where answers can be displayed with technical or explanitory responses.
+The given assignment was sent in a PDF with three sample tables and five long-form questions about a fictional company, DogDB.  To thoroughly and professionally answer these questions, I strove to create an accessible and visible response with a Github Repo.  This has the benefit of a polished and informative platform where answers can be displayed with technical or explanitory responses.
 
 
 ## Assignment Response
